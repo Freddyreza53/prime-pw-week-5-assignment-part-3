@@ -21,3 +21,18 @@ console.log(addToCollection('30', 'Adele', 2021 ));
 console.log(addToCollection('The Eminem Show', 'Eminem', 2002 ));
 
 console.log(collection);
+
+function showCollection(albumArray) {
+  let removed;
+
+  console.log(albumArray.length);
+
+  for (let i = 0; i < albumArray.length; i++) {
+  removed = albumArray[i];
+
+  console.log(`${removed.theTitle} by ${removed.theArtist}, published in ${removed.theYearPublished}`);
+  }
+
+}
+
+showCollection(collection);
