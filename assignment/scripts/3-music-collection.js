@@ -34,7 +34,7 @@ function findByArtist(findArtist) {
   let findArray = []; // array that will store albums that match input parameter findArtist
 
   for (let i = 0; i < collection.length; i++) {
-    if (collection[i].theArtist === findArtist){
+    if (collection[i].theArtist.toLowerCase() === findArtist.toLowerCase()){
       findArray.push(collection[i]); // pushes album that matches findArtist
     } // end if statement that checks if theArtist property matches findArtist
   } // end for-loop that loops through entire array collection
@@ -54,9 +54,9 @@ function search(searchArtist, searchYear, searchTrack) {
     return collection; // returns entire collectiong if search input was empty
   } // end if statement that checks if there were no arguments when calling search function
   for (let i = 0; i < collection.length; i++) {
-    if (collection[i].theArtist === searchArtist && collection[i].theYearPublished === searchYear){
+    if (collection[i].theArtist.toLowerCase() === searchArtist.toLowerCase() && collection[i].theYearPublished === searchYear){
       for (let j = 0; j < collection[i].theTracks.length; j += 2) {
-        if (collection[i].theTracks[j] === searchTrack) {
+        if (collection[i].theTracks[j].toLowerCase() === searchTrack.toLowerCase()) {
           searchArray.push(collection[i]); // input track name and track name in album match, pushes that album to new array
         } // end if statement that checks if input track name matches track in album at index i
       } // end for-loop that loops through each track stored in theTracks
@@ -82,12 +82,12 @@ console.log(addToCollection('The Eminem Show', 'Eminem', 2002, ['White America',
 showCollection(collection);
 
 console.log('----- Find By Artist Name -----');
-console.log(findByArtist('Kanye West'));
+console.log(findByArtist('kanye west'));
 console.log(findByArtist('Doja Cat'));
 console.log('-------------------------------');
 
 console.log('----- Searching For Album -----');
-console.log(search('Kanye West', 2021, 'Jail'));
+console.log(search('kanye west', 2021, 'jail'));
 console.log(search('hi', 2, 'yes'));
 console.log(search());
 
