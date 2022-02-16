@@ -70,6 +70,7 @@ function search(searchArtist, searchYear, searchTrack) {
   }// end if statement that checks to see if there were inputs for search or if there were any failed matches
 } // end search function
 
+// --------- Testing Functions Below ---------
 showCollection(collection);
 
 console.log(addToCollection('Donda', 'Kanye West', 2021, ['Donda Chant', '0:52', 'Jail', '4:57', 'God Breathed', '5:33']));
