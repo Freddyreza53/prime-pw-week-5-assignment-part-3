@@ -51,7 +51,7 @@ function search(searchArtist, searchYear, searchTrack) {
   let counter = 0; // keeps track of failed matches
 
   if (searchCriteria.artist == undefined && searchCriteria.year == undefined && searchCriteria.track == undefined) {
-    return collection; // returns entire collectiong if search input was empty
+    return collection; // returns entire collection if search input was empty
   } // end if statement that checks if there were no arguments when calling search function
   for (let i = 0; i < collection.length; i++) {
     if (collection[i].theArtist.toLowerCase() === searchArtist.toLowerCase() && collection[i].theYearPublished === searchYear){
