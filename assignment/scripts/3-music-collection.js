@@ -36,3 +36,20 @@ function showCollection(albumArray) {
 }
 
 showCollection(collection);
+
+function findByArtist(findArtist) {
+  let findArray = [];
+
+  let found;
+
+  for (let i = 0; i < collection.length; i++) {
+    found = collection[i];
+    if (found.theArtist === findArtist){
+      findArray.push(collection[i]);
+    }
+  }
+  return findArray;
+}
+
+console.log(findByArtist('Kanye West'));
+console.log(findByArtist('Doja Cat'));
