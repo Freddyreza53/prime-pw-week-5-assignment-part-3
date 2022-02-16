@@ -63,7 +63,6 @@ function search(searchArtist, searchYear, searchTrack) {
   }
 
   let searchArray = [];
-  let searchFound;
   let counter = 0;
   let trackCount = 0;
 
@@ -72,11 +71,10 @@ function search(searchArtist, searchYear, searchTrack) {
   }
 
   for (let i = 0; i < collection.length; i++) {
-    searchFound = collection[i];
 
-    if (searchFound.theArtist === searchArtist && searchFound.theYearPublished === searchYear){
-      for (let j = 0; j < searchFound.theTracks.length; j += 2) {
-        if (searchFound.theTracks[j] === searchTrack) {
+    if (collection[i].theArtist === searchArtist && collection[i].theYearPublished === searchYear){
+      for (let j = 0; j < collection[i].theTracks.length; j += 2) {
+        if (collection[i].theTracks[j] === searchTrack) {
           searchArray.push(collection[i]);
         }
       }
