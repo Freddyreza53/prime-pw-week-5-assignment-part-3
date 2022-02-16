@@ -39,7 +39,6 @@ showCollection(collection);
 
 function findByArtist(findArtist) {
   let findArray = [];
-
   let found;
 
   for (let i = 0; i < collection.length; i++) {
@@ -53,3 +52,37 @@ function findByArtist(findArtist) {
 
 console.log(findByArtist('Kanye West'));
 console.log(findByArtist('Doja Cat'));
+
+function search(searchArtist, searchYear) {
+  const searchCriteria = {
+    artist : searchArtist,
+    year   : searchYear
+  }
+
+  let searchArray = [];
+  let searchFound;
+  let counter = 0;
+
+  if (searchCriteria.artist == undefined && searchCriteria.year == undefined) {
+    return collection;
+  }
+
+  for (let i = 0; i < collection.length; i++) {
+    searchFound = collection[i];
+    if (searchFound.theArtist === searchArtist && searchFound.theYearPublished === searchYear){
+      searchArray.push(collection[i]);
+    }
+    else {
+      counter++;
+    }
+
+  }
+  if (searchArray.length > 0 || counter > 0) {
+    return searchArray;
+  }
+
+}
+
+console.log(search('Kanye West', 2021));
+console.log(search('hi', 2));
+console.log(search());
