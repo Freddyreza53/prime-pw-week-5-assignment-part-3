@@ -22,6 +22,7 @@ console.log(addToCollection('The Eminem Show', 'Eminem', 2002, ['White America',
 console.log(collection);
 
 function showCollection(albumArray) {
+  console.log('----- My Collection -----');
   console.log(`${albumArray.length} Albums In My Collection`);
 
   for (let i = 0; i < albumArray.length; i++) {
@@ -35,7 +36,6 @@ function showCollection(albumArray) {
     console.log('-----------------------------------------');
   }
 }
-console.log('----- My Collection -----');
 showCollection(collection);
 
 function findByArtist(findArtist) {
@@ -91,3 +91,6 @@ console.log('----- Searching For Album -----');
 console.log(search('Kanye West', 2021, 'Jail'));
 console.log(search('hi', 2));
 console.log(search());
+
+console.log(addToCollection('Dangerous Woman', 'Ariana Grande', 2016, ['Moonlight', '3:22', 'Dangerous Woman', '3:56', 'Be Alright', '2:59', 'Into You', '4:05']));
+showCollection(collection);
