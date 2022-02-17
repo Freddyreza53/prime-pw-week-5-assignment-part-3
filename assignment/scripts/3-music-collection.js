@@ -52,7 +52,7 @@ function search(searchCriteria) {
     if (collection[i].theArtist.toLowerCase() === searchCriteria.artist.toLowerCase() && collection[i].theYearPublished === searchCriteria.year){
       for (let j = 0; j < collection[i].theTracks.length; j += 2) {
         if (collection[i].theTracks[j].toLowerCase() === searchCriteria.track.toLowerCase()) {
-          searchArray.push(collection[i]); // input track name and track name in album match, pushes that album to new array
+          searchArray.push(collection[i]); // track from input object and track name in album match, pushes that album to new array
         } // end if statement that checks if input track name matches track in album at index i
       } // end for-loop that loops through each track stored in theTracks
     } // end if statement that checks if artist and year published of album match input artist and year
@@ -93,14 +93,13 @@ const searchAlbum1 = {
   artist : 'Linkin Park',
   year   : 2001,
   track  : 'In The End'
-}
-let searchAlbum2; // end object that stores input parameters as object properties
- // end object that stores input parameters as object properties
+}// end object that stores input parameters as object properties
+let searchAlbum2;
 
-console.log(search(searchAlbum));
-console.log(search(searchAlbum1));
-console.log(search(searchAlbum2));
-console.log(search());
+console.log(search(searchAlbum)); // test for matching all search criteria
+console.log(search(searchAlbum1)); // test for no matching search criteria
+console.log(search(searchAlbum2)); // test for none object as argument
+console.log(search()); // test for no argument
 
 console.log(addToCollection('Dangerous Woman', 'Ariana Grande', 2016, ['Moonlight', '3:22', 'Dangerous Woman', '3:56', 'Be Alright', '2:59', 'Into You', '4:05']));
 showCollection(collection);
