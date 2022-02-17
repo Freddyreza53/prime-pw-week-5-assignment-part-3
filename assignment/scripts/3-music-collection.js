@@ -10,6 +10,7 @@ function addToCollection(title, artist, yearPublished, tracks) {
     theTracks        : tracks
   } // end newAlbum object
   collection.push(newAlbum)
+  console.log('----- Adding To Collection -----');
   return newAlbum;
 } // end addToCollection function
 
@@ -68,12 +69,29 @@ function search(searchCriteria) {
 // --------- Testing Functions Below ---------
 showCollection(collection);
 
-console.log(addToCollection('Donda', 'Kanye West', 2021, ['Donda Chant', '0:52', 'Jail', '4:57', 'God Breathed', '5:33']));
-console.log(addToCollection('Doo-Wops & Hooligans', 'Bruno Mars', 2010, ['Grenade', '3:42', 'Just the Way You Are', '3:40']));
-console.log(addToCollection('Sour', 'Olivia Rodrigo', 2021, ['Brutal', '2:23']));
-console.log(addToCollection('The College Dropout', 'Kanye West', 2004, ['Intro', '0:19', 'Graduation Day', '1:21', 'All Falls Down', '3:43']));
-console.log(addToCollection('30', 'Adele', 2021, ['Strangers by Nature', '3:02', 'Easy on Me', '3:44']));
-console.log(addToCollection('The Eminem Show', 'Eminem', 2002, ['White America', '5:25']));
+console.log(addToCollection('Donda', 'Kanye West', 2021,
+                            ['Donda Chant', '0:52',
+                             'Jail', '4:57',
+                             'God Breathed', '5:33']));
+
+console.log(addToCollection('Doo-Wops & Hooligans', 'Bruno Mars', 2010,
+                            ['Grenade', '3:42',
+                             'Just the Way You Are', '3:40']));
+
+console.log(addToCollection('Sour', 'Olivia Rodrigo', 2021,
+                            ['Brutal', '2:23']));
+
+console.log(addToCollection('The College Dropout', 'Kanye West', 2004,
+                            ['Intro', '0:19',
+                             'Graduation Day', '1:21',
+                             'All Falls Down', '3:43']));
+
+console.log(addToCollection('30', 'Adele', 2021,
+                            ['Strangers by Nature', '3:02',
+                             'Easy on Me', '3:44']));
+
+console.log(addToCollection('The Eminem Show', 'Eminem', 2002,
+                            ['White America', '5:25']));
 
 showCollection(collection);
 
@@ -90,16 +108,26 @@ const searchAlbum = {
   track  : 'jail'
 } // end object that stores input parameters as object properties
 const searchAlbum1 = {
+  artist : 'eminem',
+  year   : 2002,
+  track  : 'Grenade'
+} // end object that stores input parameters as object properties
+const searchAlbum2 = {
   artist : 'Linkin Park',
   year   : 2001,
   track  : 'In The End'
 }// end object that stores input parameters as object properties
-let searchAlbum2;
+let searchAlbum3;
 
 console.log(search(searchAlbum)); // test for matching all search criteria
-console.log(search(searchAlbum1)); // test for no matching search criteria
-console.log(search(searchAlbum2)); // test for none object as argument
-console.log(search()); // test for no argument
+console.log(search(searchAlbum1)); // test for some matching search criteria, not all
+console.log(search(searchAlbum2)); // test for no matching search criteria
+console.log(search(searchAlbum3)); // test for none search object as argument
+console.log(search()); // test for empty search
 
-console.log(addToCollection('Dangerous Woman', 'Ariana Grande', 2016, ['Moonlight', '3:22', 'Dangerous Woman', '3:56', 'Be Alright', '2:59', 'Into You', '4:05']));
+console.log(addToCollection('Dangerous Woman', 'Ariana Grande', 2016,
+                            ['Moonlight', '3:22',
+                             'Dangerous Woman', '3:56',
+                             'Be Alright', '2:59',
+                             'Into You', '4:05']));
 showCollection(collection);
