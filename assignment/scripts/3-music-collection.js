@@ -41,22 +41,17 @@ function findByArtist(findArtist) {
   return findArray; // returns array with all albums that have findArtist or an empty array
 } // end findByArtist function
 
-function search(searchArtist, searchYear, searchTrack) {
-  const searchCriteria = {
-    artist : searchArtist,
-    year   : searchYear,
-    track  : searchTrack
-  } // end object that stores input parameters as object properties
+function search(searchCriteria) {
   let searchArray = []; // array for storing albums matching searchCriteria properties
   let counter = 0; // keeps track of failed matches
 
-  if (searchCriteria.artist == undefined && searchCriteria.year == undefined && searchCriteria.track == undefined) {
+  if (searchCriteria == undefined) {
     return collection; // returns entire collection if search input was empty
   } // end if statement that checks if there were no arguments when calling search function
   for (let i = 0; i < collection.length; i++) {
-    if (collection[i].theArtist.toLowerCase() === searchArtist.toLowerCase() && collection[i].theYearPublished === searchYear){
+    if (collection[i].theArtist.toLowerCase() === searchCriteria.artist.toLowerCase() && collection[i].theYearPublished === searchCriteria.year){
       for (let j = 0; j < collection[i].theTracks.length; j += 2) {
-        if (collection[i].theTracks[j].toLowerCase() === searchTrack.toLowerCase()) {
+        if (collection[i].theTracks[j].toLowerCase() === searchCriteria.track.toLowerCase()) {
           searchArray.push(collection[i]); // input track name and track name in album match, pushes that album to new array
         } // end if statement that checks if input track name matches track in album at index i
       } // end for-loop that loops through each track stored in theTracks
@@ -88,8 +83,23 @@ console.log(findByArtist('Doja Cat'));
 console.log('-------------------------------');
 
 console.log('----- Searching For Album -----');
-console.log(search('kanye west', 2021, 'jail'));
-console.log(search('hi', 2, 'yes'));
+
+const searchAlbum = {
+  artist : 'kanye west',
+  year   : 2021,
+  track  : 'jail'
+} // end object that stores input parameters as object properties
+const searchAlbum1 = {
+  artist : 'Linkin Park',
+  year   : 2001,
+  track  : 'In The End'
+}
+let searchAlbum2; // end object that stores input parameters as object properties
+ // end object that stores input parameters as object properties
+
+console.log(search(searchAlbum));
+console.log(search(searchAlbum1));
+console.log(search(searchAlbum2));
 console.log(search());
 
 console.log(addToCollection('Dangerous Woman', 'Ariana Grande', 2016, ['Moonlight', '3:22', 'Dangerous Woman', '3:56', 'Be Alright', '2:59', 'Into You', '4:05']));
