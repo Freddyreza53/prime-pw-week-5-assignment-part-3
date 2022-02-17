@@ -32,6 +32,8 @@ function showCollection(albumArray) {
 } // end showCollection function
 
 function findByArtist(findArtist) {
+  console.log('----- Find By Artist Name -----');
+
   let findArray = []; // array that will store albums that match input parameter findArtist
 
   for (let i = 0; i < collection.length; i++) {
@@ -39,14 +41,19 @@ function findByArtist(findArtist) {
       findArray.push(collection[i]); // pushes album that matches findArtist
     } // end if statement that checks if theArtist property matches findArtist
   } // end for-loop that loops through entire array collection
+  console.log(`Searching for: ${findArtist}`);
+  console.log('Search Results:');
   return findArray; // returns array with all albums that have findArtist or an empty array
 } // end findByArtist function
 
 function search(searchCriteria) {
+  console.log('----- Searching For Album -----');
+
   let searchArray = []; // array for storing albums matching searchCriteria properties
-  let counter = 0; // keeps track of failed matches
 
   if (searchCriteria == undefined) {
+    console.log(`Searching for:\nArtist -\nYear Published -\nTrack Name -`);
+    console.log('Search Results:');
     return collection; // returns entire collection if search input was empty
   } // end if statement that checks if there were no arguments when calling search function
   for (let i = 0; i < collection.length; i++) {
@@ -57,13 +64,10 @@ function search(searchCriteria) {
         } // end if statement that checks if input track name matches track in album at index i
       } // end for-loop that loops through each track stored in theTracks
     } // end if statement that checks if artist and year published of album match input artist and year
-    else {
-      counter++; // increments each time there are no matches
-    } // else statement
   } // end for-loop that loops through albums in collection array
-  if (searchArray.length > 0 || counter > 0) {
-    return searchArray; // returns empty array if searchCriteria doesn't match albums in collection
-  }// end if statement that checks to see if there were inputs for search or if there were any failed matches
+  console.log(`Searching for:\nArtist - ${searchCriteria.artist}\nYear Published - ${searchCriteria.year}\nTrack Name - ${searchCriteria.track}`);
+  console.log('Search Results:');
+  return searchArray;
 } // end search function
 
 // --------- Testing Functions Below ---------
@@ -95,20 +99,16 @@ console.log(addToCollection('The Eminem Show', 'Eminem', 2002,
 
 showCollection(collection);
 
-console.log('----- Find By Artist Name -----');
-console.log(findByArtist('kanye west'));
+console.log(findByArtist('Kanye West'));
 console.log(findByArtist('Doja Cat'));
-console.log('-------------------------------');
-
-console.log('----- Searching For Album -----');
 
 const searchAlbum = {
-  artist : 'kanye west',
+  artist : 'Kanye West',
   year   : 2021,
-  track  : 'jail'
+  track  : 'Jail'
 } // end object that stores input parameters as object properties
 const searchAlbum1 = {
-  artist : 'eminem',
+  artist : 'Eminem',
   year   : 2002,
   track  : 'Grenade'
 } // end object that stores input parameters as object properties
