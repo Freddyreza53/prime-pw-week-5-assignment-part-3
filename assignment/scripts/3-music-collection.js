@@ -19,12 +19,13 @@ function showCollection(albumArray) {
   console.log(`${albumArray.length} Albums In My Collection`);
   console.log('-------------------------');
 
-  for (let i = 0; i < albumArray.length; i++) {
-    console.log(`${albumArray[i].theTitle} by ${albumArray[i].theArtist}, published in ${albumArray[i].theYearPublished}:`);
+  for (let album of albumArray) {
+    console.log(`${album.theTitle} by ${album.theArtist}, published in ${album.theYearPublished}:`);
     let c = 1; // I am using this as my numbers for listing tracks
 
-    for (let j = 0; j < albumArray[i].theTracks.length; j += 2) { // j increments by 2 since every other index inside of track array is the track name
-      console.log(`${c}. ${albumArray[i].theTracks[j]}: ${albumArray[i].theTracks[j + 1]} `);
+    // i increments by 2 since every other index inside of track array is the track name
+    for (let i = 0; i < album.theTracks.length; i += 2) {
+      console.log(`${c}. ${album.theTracks[i]}: ${album.theTracks[i + 1]} `);
       c++; // increments after a track is listed
     } // end for-loop that loops through each track stored in theTracks
     console.log('-----------------------------------------');
@@ -36,9 +37,9 @@ function findByArtist(findArtist) {
 
   let findArray = []; // array that will store albums that match input parameter findArtist
 
-  for (let i = 0; i < collection.length; i++) {
-    if (collection[i].theArtist.toLowerCase() === findArtist.toLowerCase()){
-      findArray.push(collection[i]); // pushes album that matches findArtist
+  for (let album of collection) {
+    if (album.theArtist.toLowerCase() === findArtist.toLowerCase()){
+      findArray.push(album); // pushes album that matches findArtist
     } // end if statement that checks if theArtist property matches findArtist
   } // end for-loop that loops through entire array collection
   console.log(`Searching for: ${findArtist}`);
@@ -52,20 +53,26 @@ function search(searchCriteria) {
   let searchArray = []; // array for storing albums matching searchCriteria properties
 
   if (searchCriteria == undefined) {
-    console.log(`Searching for:\nArtist -\nYear Published -\nTrack Name -`);
+    console.log(`Searching for: Artist         -
+               Year Published -
+               Track Name     -`);
     console.log('Search Results:');
     return collection; // returns entire collection if search input was empty
   } // end if statement that checks if there were no arguments when calling search function
-  for (let i = 0; i < collection.length; i++) {
-    if (collection[i].theArtist.toLowerCase() === searchCriteria.artist.toLowerCase() && collection[i].theYearPublished === searchCriteria.year){
-      for (let j = 0; j < collection[i].theTracks.length; j += 2) {
-        if (collection[i].theTracks[j].toLowerCase() === searchCriteria.track.toLowerCase()) {
-          searchArray.push(collection[i]); // track from input object and track name in album match, pushes that album to new array
+  for (let album of collection) {
+    if (album.theArtist.toLowerCase() === searchCriteria.artist.toLowerCase()
+        && album.theYearPublished === searchCriteria.year){
+      // i increments by 2 since every other index inside of track array is the track name(0, 2, 4, etc.)
+      for (let i = 0; i < album.theTracks.length; i += 2) {
+        if (album.theTracks[i].toLowerCase() === searchCriteria.track.toLowerCase()) {
+          searchArray.push(album); // track from input object and track name in album match, pushes that album to new array
         } // end if statement that checks if input track name matches track in album at index i
       } // end for-loop that loops through each track stored in theTracks
     } // end if statement that checks if artist and year published of album match input artist and year
   } // end for-loop that loops through albums in collection array
-  console.log(`Searching for:\nArtist - ${searchCriteria.artist}\nYear Published - ${searchCriteria.year}\nTrack Name - ${searchCriteria.track}`);
+  console.log(`Searching for: Artist         - ${searchCriteria.artist}
+               Year Published - ${searchCriteria.year}
+               Track Name     - ${searchCriteria.track}`);
   console.log('Search Results:');
   return searchArray;
 } // end search function
