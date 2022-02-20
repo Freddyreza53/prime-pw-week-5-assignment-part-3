@@ -43,7 +43,6 @@ function findByArtist(findArtist) {
     } // end if statement that checks if theArtist property matches findArtist
   } // end for-loop that loops through entire array collection
   console.log(`Searching for: ${findArtist}`);
-  console.log('Search Results:');
   return findArray; // returns array with all albums that have findArtist or an empty array
 } // end findByArtist function
 
@@ -56,7 +55,6 @@ function search(searchCriteria) {
     console.log(`Searching for: Artist         -
                Year Published -
                Track Name     -`);
-    console.log('Search Results:');
     return collection; // returns entire collection if search input was empty
   } // end if statement that checks if there were no arguments when calling search function
   for (let album of collection) {
@@ -73,7 +71,6 @@ function search(searchCriteria) {
   console.log(`Searching for: Artist         - ${searchCriteria.artist}
                Year Published - ${searchCriteria.year}
                Track Name     - ${searchCriteria.track}`);
-  console.log('Search Results:');
   return searchArray;
 } // end search function
 
@@ -106,8 +103,8 @@ console.log(addToCollection('The Eminem Show', 'Eminem', 2002,
 
 showCollection(collection);
 
-console.log(findByArtist('Kanye West'));
-console.log(findByArtist('Doja Cat'));
+console.log(`Search Results:`, findByArtist('Kanye West'));
+console.log(`Search Results:`, findByArtist('Doja Cat'));
 
 const searchAlbum = {
   artist : 'Kanye West',
@@ -126,11 +123,11 @@ const searchAlbum2 = {
 }// end object that stores input parameters as object properties
 let searchAlbum3;
 
-console.log(search(searchAlbum)); // test for matching all search criteria
-console.log(search(searchAlbum1)); // test for some matching search criteria, not all
-console.log(search(searchAlbum2)); // test for no matching search criteria
-console.log(search(searchAlbum3)); // test for none search object as argument
-console.log(search()); // test for empty search
+console.log(`Search Results:`, search(searchAlbum)); // test for matching all search criteria
+console.log(`Search Results:`, search(searchAlbum1)); // test for some matching search criteria, not all
+console.log(`Search Results:`, search(searchAlbum2)); // test for no matching search criteria
+console.log(`Search Results:`, search(searchAlbum3)); // test for none search object as argument
+console.log(`Search Results:`, search()); // test for empty search
 
 console.log(addToCollection('Dangerous Woman', 'Ariana Grande', 2016,
                             ['Moonlight', '3:22',
